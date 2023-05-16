@@ -6,16 +6,15 @@
 
 using namespace std;
 
-
 void fcfs(vector<Process>::const_iterator b, vector<Process>::const_iterator e, size_t n) {
     vector<Process> processes(n);
     copy(b, e, processes.begin());
     sort(processes.begin(), processes.end());
 
-    int current_time = 0;
-    int index = 0;
+    int current_time = 0, index = 0;
 
     cout << "AT:CT\tPID\n";
+
     while (index < n) {
         if (processes[index].arrival_time <= current_time) {
             cout << current_time << ':' << (current_time += processes[index].burst_time)
@@ -39,13 +38,11 @@ void sjf_np(vector<Process>::const_iterator b, vector<Process>::const_iterator e
     vector<Process> processes(n);
     copy(b, e, processes.begin());
 
-    int current_time = 0;
+    int current_time = 0, completed = 0, index = 0;
     priority_queue<Process, vector<Process>, CompareBurstTime> pq;
 
-    int completed = 0;
-    int index = 0;
-
     cout << "AT:CT\tPID\n";
+
     while (completed < n) {
         while (index < n && processes[index].arrival_time <= current_time)
             pq.push(processes[index++]);
@@ -67,13 +64,11 @@ void sjf_p(vector<Process>::const_iterator b, vector<Process>::const_iterator e 
     vector<Process> processes(n);
     copy(b, e, processes.begin());
 
-    int current_time = 0;
+    int current_time = 0, completed = 0, index = 0;;
     priority_queue<Process, vector<Process>, CompareBurstTime> pq;
 
-    int completed = 0;
-    int index = 0;
-
     cout << "AT:CT\tPID\n";
+
     while (completed < n) {
         while (index < n && processes[index].arrival_time <= current_time)
             pq.push(processes[index++]);
@@ -107,13 +102,11 @@ void priority_p(vector<Process>::const_iterator b, vector<Process>::const_iterat
     copy(b, e, processes.begin());
     sort(processes.begin(), processes.end());
 
-    int current_time = 0;
+    int current_time = 0, completed = 0, index = 0;
     priority_queue<Process, vector<Process>, ComparePriority> pq;
 
-    int completed = 0;
-    int index = 0;
-
     cout << "AT:CT\tPID\n";
+
     while (completed < n) {
         while (index < n && processes[index].arrival_time <= current_time)
             pq.push(processes[index++]);
@@ -139,13 +132,11 @@ void priority_np(vector<Process>::const_iterator b, vector<Process>::const_itera
     vector<Process> processes(n);
     copy(b, e, processes.begin());
 
-    int current_time = 0;
+    int current_time = 0, completed = 0, index = 0;
     priority_queue<Process, vector<Process>, ComparePriority> pq;
 
-    int completed = 0;
-    int index = 0;
-
     cout << "AT:CT\tPID\n";
+
     while (completed < n) {
         while (index < n && processes[index].arrival_time <= current_time)
             pq.push(processes[index++]);
@@ -168,14 +159,12 @@ void rr(vector<Process>::const_iterator b, vector<Process>::const_iterator e , s
     copy(b, e, processes.begin());
     sort(processes.begin(), processes.end());
 
-    int current_time = 0;
     queue<Process> q;
+    int current_time = 0, completed = 0, index = 0;
     Process lastWorkedOn({-1, -1, -1, -1});
 
-    int completed = 0;
-    int index = 0;
-
     cout << "AT:CT\tPID\n";
+
     while (completed != n) {
         while (index < n && processes[index].arrival_time <= current_time)
             q.push(processes[index++]);
