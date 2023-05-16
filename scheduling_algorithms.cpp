@@ -63,13 +63,6 @@ void sjf_np(vector<Process>::const_iterator b, vector<Process>::const_iterator e
     }
 }
 
-struct ComparePriority {
-    bool operator()(const Process& p1, const Process& p2) {
-        return (p1.priority > p2.priority) ||
-               ((p1.priority == p2.priority) && (p1.arrival_time > p2.arrival_time));
-    }
-};
-
 void sjf_p(vector<Process>::const_iterator b, vector<Process>::const_iterator e , size_t n) {
     vector<Process> processes(n);
     copy(b, e, processes.begin());
@@ -101,6 +94,13 @@ void sjf_p(vector<Process>::const_iterator b, vector<Process>::const_iterator e 
         cout << current_time << ':' << ++current_time << '\t' <<  p.process_number << '\n';
     }
 }
+
+struct ComparePriority {
+    bool operator()(const Process& p1, const Process& p2) {
+        return (p1.priority > p2.priority) ||
+               ((p1.priority == p2.priority) && (p1.arrival_time > p2.arrival_time));
+    }
+};
 
 void priority_p(vector<Process>::const_iterator b, vector<Process>::const_iterator e , size_t n) {
     vector<Process> processes(n);
@@ -179,8 +179,10 @@ void rr(vector<Process>::const_iterator b, vector<Process>::const_iterator e , s
     while (completed != n) {
         while (index < n && processes[index].arrival_time <= current_time)
             q.push(processes[index++]);
-        if(lastWorkedOn.priority != -1)
+        if(lastWorkedOn.priority != -1){
             q.push(lastWorkedOn);
+            lastWorkedOn.priority = -1;
+        }
 
         if (q.empty()) {
             cout << current_time << ':' << processes[index].arrival_time << "\tNULL" << '\n';
