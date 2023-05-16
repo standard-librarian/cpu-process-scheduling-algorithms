@@ -6,6 +6,28 @@
 
 using namespace std;
 
+
+void fcfs(vector<Process>::const_iterator b, vector<Process>::const_iterator e, size_t n){
+    vector<Process> processes(n);
+    copy(b, e, processes.begin());
+    sort(processes.begin(), processes.end());
+
+    int current_time = 0;
+    int index = 0;
+
+    cout << "AT:CT\tPID\n";
+    while (index < n) {
+        if (processes[index].arrival_time <= current_time) {
+            cout << current_time << ':' << (current_time += processes[index].burst_time)
+                 << '\t' << processes[index].process_number << '\n';
+            ++index;
+        } else {
+            cout << current_time << ':' << processes[index].arrival_time << "\tNULL" << '\n';
+            current_time = processes[index].arrival_time;
+        }
+    }
+}
+
 struct CompareBurstTime {
     bool operator()(const Process& p1, const Process& p2) {
         return (p1.burst_time > p2.burst_time) ||
