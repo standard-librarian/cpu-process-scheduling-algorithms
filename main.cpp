@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "scheduling_algorithms.h"
 #include "Process.h"
 
 int main(){
@@ -12,8 +13,8 @@ int main(){
 //    std::cout << "\n fcfs\n";
 //    fcfs(processes.cbegin(), processes.cend(), processes.size());
 //
-//    std::cout << "\n SJF_NP\n";
-//    sjf_np(processes.cbegin(), processes.cend(), processes.size());
+    std::cout << "\n SJF_NP\n";
+    sjf_np(processes.cbegin(), processes.cend(), processes.size());
 //
 //    std::cout << "\n sjfP\n";
 //    priority_np(processes.cbegin(), processes.cend(), processes.size());
