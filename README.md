@@ -17,7 +17,9 @@ In computer operating systems, process scheduling is an essential component. Whe
 - **SJF**: Shortest Job First (SJF) is a scheduling algorithm that schedules the shortest job first. This algorithm can be either *preemptive* or *non-preemptive*.
    - In **preemptive SJF**, a running process can be preempted if a shorter job arrives.
    - In **non-preemptive SJF**, the current running process will continue until it finishes, even if a shorter job arrives.
-- **Priority Scheduling**: Priority scheduling is a scheduling algorithm where each process is assigned a priority. The process with the highest priority is scheduled first, followed by the process with the next highest priority, and so on. In preemptive priority scheduling, a running process can be preempted if a higher priority process arrives. In non-preemptive priority scheduling, the current running process will continue until it finishes, even if a higher priority process arrives.
+- **Priority Scheduling**: Priority scheduling is a scheduling algorithm where each process is assigned a priority. The process with the highest priority is scheduled first, followed by the process with the next highest priority, and so on. 
+   - In **preemptive priority scheduling**, a running process can be preempted if a higher priority process arrives. 
+   - In **non-preemptive priority scheduling**, the current running process will continue until it finishes, even if a higher priority process arrives.
 - **Round Robin**: Round Robin is a scheduling algorithm that assigns a fixed time slice to each process in a cyclic way. The process that arrives first will be executed first, followed by the process that arrives next, and so on. If a process finishes its time slice, it is preempted and added to the end of the queue.
 
 # Example for Input & Output for the Algorithms
