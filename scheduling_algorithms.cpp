@@ -61,7 +61,7 @@ void priority_p(vector<Process>::const_iterator b, vector<Process>::const_iterat
 
     cout << "AT:CT\tPID\n";
     while (completed < n) {
-        while (processes[index].arrival_time <= current_time)
+        while (index < n && processes[index].arrival_time <= current_time)
             pq.push(processes[index++]);
 
         if (pq.empty()) {
