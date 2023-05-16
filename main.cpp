@@ -22,8 +22,8 @@ int main(){
 //    std::cout << "\n Priority_NP\n";
 //    sjf_p(processes.cbegin(), processes.cend(), processes.size());
 //
-//    std::cout << "\n priorityP\n";
-//    priority_p(processes.cbegin(), processes.cend(), processes.size());
+    std::cout << "\n priorityP\n";
+    priority_p(processes.cbegin(), processes.cend(), processes.size());
 //
 //    std::cout << "\n RR\n";
 //    rr(processes.cbegin(), processes.cend(), processes.size(), 3);
